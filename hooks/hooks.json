@@ -1,0 +1,40 @@
+{
+  "description": "Nudges Claude to use LSP tools for code navigation instead of grep/find/read",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/hooks/prefer-lsp-pretool.js",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "LSP",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/hooks/prefer-lsp-posttool.js",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/hooks/prefer-lsp-session-reset.js",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

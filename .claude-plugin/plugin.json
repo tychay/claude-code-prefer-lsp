@@ -1,0 +1,7 @@
+{
+  "name": "prefer-lsp",
+  "displayName": "Prefer LSP",
+  "version": "1.0.0",
+  "description": "Nudges Claude to use LSP tools instead of grep/find for code navigation on supported file types",
+  "author": { "name": "tychay" }
+}
