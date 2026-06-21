@@ -1,6 +1,6 @@
 # Prefer LSP
 
-A Claude Code plugin that nudges Claude to use LSP tools instead of grep/find for code navigation — saving ~40x tokens per operation.
+A Claude Code plugin that nudges Claude to use LSP tools instead of grep/find for code navigation — saving ~40x tokens per operation. Think of it as an IDE for Claude to code in.
 
 ## In Action
 
@@ -16,9 +16,9 @@ Non-blocking. Claude sees the nudge, switches to LSP, and the nudge suppresses f
 
 ## Why This Plugin Exists
 
-- **Language servers give Claude deterministic navigation.** Go-to-definition, find-references, and workspace-symbol return precise AST-based results in ~80 tokens. Grep returns 23 noisy matches in ~1500 tokens, then Claude reads 2-3 wrong files before finding the right one.
+- **Language servers give Claude deterministic navigation.** Go-to-definition, find-references, and workspace-symbol return precise AST-based results in ~80 tokens. Grep returns 23 noisy matches in ~1500 tokens, then Claude reads 2-3 wrong files before finding the right one. (Sort of like me before vim bindings in my IDEs.)
 
-- **Claude Code has native LSP support** via official plugins (`typescript-lsp`, `pyright-lsp`, `php-lsp`) and community plugins (`markdown-oxide-lsp`, `ansible-lsp`). The infrastructure is there — but Claude routinely ignores soft rules (`.claude/rules/`) telling it to prefer LSP. This feature was added in December 2025 but it is still (late Jun 2026) gated behind a feature flag. Before this, (and it is still a common pattern to use), the only way to do this was via an LSP-to-MCP Bridge.
+- **Claude Code has native LSP support** via official plugins (`typescript-lsp`, `pyright-lsp`, `php-lsp`) and community plugins (`markdown-oxide-lsp`, `ansible-lsp`). The infrastructure is there — but Claude routinely ignores soft rules (`.claude/rules/`) telling it to prefer LSP. This feature was added in December 2025 but it may still be gated behind a feature flag. Before this, (and it is still a common pattern to use), the only way to do this was via an LSP-to-MCP Bridge.
 
 - **A PreToolUse hook can't be "forgotten."** It runs on every tool call regardless of context window pressure, compaction, or system prompt length. One nudge is enough — once reminded, Claude uses LSP for the rest of the session… hopefully!
 
@@ -43,7 +43,8 @@ See [`docs/lsp-setup-guide.md`](docs/lsp-setup-guide.md) for installation guidan
 ### From a plugin marketplace
 
 ```bash
-claude plugin install prefer-lsp@<your-marketplace>
+claude plugin marketplace add tychay/claude-code-prefer-lsp
+claude plugin install prefer-lsp
 ```
 
 ### From a local directory
@@ -62,6 +63,8 @@ claude plugin install --source directory --path ./claude-code-prefer-lsp
 After install, reload Claude Code (Cmd-Shift-P → "Developer: Reload Window" in VS Code).
 
 ## How It Works
+
+After it is installed and active, you shouldn't have to do anything. But, here are the binaries and what they do:
 
 | Hook | Event | What it does |
 |------|-------|--------------|
