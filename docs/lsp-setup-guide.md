@@ -104,7 +104,7 @@ Claude Code needs to find language server binaries, you need to add them to your
 
 ## Enable the LSP Tool (Feature Flag)
 
-As of mid-2026, the LSP tool is still gated behind an undocumented feature flag. Without it, plugins install fine but the LSP tool never appears — Claude reports "No LSP server available for file type" even with everything else configured correctly.
+As of mid-2026, the LSP tool may still be gated behind an undocumented feature flag. Without it, plugins install fine but the LSP tool never appears — Claude reports "No LSP server available for file type" even with everything else configured correctly.
 
 Add to `~/.claude/settings.json`:
 
@@ -131,12 +131,3 @@ After installing, reload Claude Code (Cmd-Shift-P → "Developer: Reload Window"
 5. **Ansible:** Open a `.yml` playbook, check for diagnostics — should use LSP tool
 
 If Claude still defaults to grep, install the [prefer-lsp plugin](../README.md) to enforce LSP-first behavior via hooks.
-
-## Setup Checklist (New Machine)
-
-1. Install VS Code extensions: Intelephense, Ansible (Red Hat)
-2. Run the binary install commands above (npm, brew, wrapper scripts)
-3. Install Claude Code LSP plugins (official + community)
-4. Add PATH to `~/.claude/settings.json`
-5. Install the prefer-lsp plugin
-6. Reload Claude Code
