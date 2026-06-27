@@ -1,8 +1,8 @@
 ## ADDED Requirements
 
-### Requirement: <name>
-<!-- Requirement text using SHALL/MUST -->
+### Requirement: <!-- requirement name -->
+<!-- requirement text -->
 
-#### Scenario: <name>
-- **WHEN** <!-- trigger condition -->
+#### Scenario: <!-- scenario name -->
+- **WHEN** <!-- condition -->
 - **THEN** <!-- expected outcome -->
